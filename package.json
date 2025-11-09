@@ -10,7 +10,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "ejs": "^3.1.6",
-    "express": "^4.18.1",
+    "express": "^4.21.2",
     "mysql": "^2.18.1",
     "mysql2": "^3.15.3",
     "pug": "^3.0.2"
@@ -23,5 +23,7 @@
     "url": "https://github.com/lewfer/gs-dwa-lab-3.1/issues"
   },
   "homepage": "https://github.com/lewfer/gs-dwa-lab-3.1#readme",
-  "description": ""
+  "description": "Sample code for Dynamic Web Applications module.",
+  "devDependencies": {},
+  "keywords": []
 }
