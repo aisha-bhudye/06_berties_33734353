@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book List - Berties Books</title>
+    <link rel="stylesheet" type="text/css" href="/main.css">
+</head>
+<body>
+    <h1>Berties Book Shop</h1>
+    
+    <div class="book-list">
+        <h2>Available Books</h2>
+        
+        <% if (availableBooks.length > 0) { %>
+            <% availableBooks.forEach(function(book) { %>
+                <div class="book-item">
+                    <span class="book-name"><%= book.name %></span> - 
+                    <span class="book-price">£<%= book.price %></span>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No books available at the moment.</p>
+        <% } %>
+    </div>
+</body>
+</html>
