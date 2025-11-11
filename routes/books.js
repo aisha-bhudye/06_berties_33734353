@@ -5,15 +5,6 @@ const shopData = {
     shopName: "Bertie's Books"
 };
 
-// router.get('/search',function(req, res, next){
-//     res.render("search.ejs")
-// });
-
-// router.get('/search-result', function (req, res, next) {
-//     //searching in the database
-//     res.send("You searched for: " + req.query.keyword)
-// });
-
 // Route to display the search form
 router.get('/search', function(req, res, next){
     res.render("search.ejs", {shopData: shopData}); // Pass shopData to template
@@ -55,7 +46,7 @@ router.get('/list', function(req, res, next) {
 
 
 
-// TASK 3: Add book page - shows the form
+// TASK 3: Add book page 
 router.get('/addbook', function(req, res, next) {
     res.render("addbook.ejs")
 });

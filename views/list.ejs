@@ -11,12 +11,12 @@
         <h2>Available Books</h2>
         
         <% if (availableBooks.length > 0) { %>
-            <% availableBooks.forEach(function(book) { %>
+            <% for (var i = 0; i < availableBooks.length; i++) { %>
                 <div class="book-item">
-                    <span class="book-name"><%= book.name %></span> - 
-                    <span class="book-price">£<%= book.price %></span>
+                    <span class="book-name"><%= availableBooks[i].name %></span> - 
+                    <span class="book-price">£<%= availableBooks[i].price %></span>
                 </div>
-            <% }); %>
+            <% } %>
         <% } else { %>
             <p>No books available at the moment.</p>
         <% } %>
