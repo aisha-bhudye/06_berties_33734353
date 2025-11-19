@@ -39,3 +39,21 @@ This application implements audit logging to track all login attempts for securi
 - Timestamps are automatically recorded using MySQL's `CURRENT_TIMESTAMP`
 - IP addresses are captured from the request object
 - Records are displayed in reverse chronological order (newest first). 
+
+### AI Declaration
+
+I acknowledge the use of [1] ChatGPT (https://chat.openai.com/) to [2] assist with identifying and debugging errors in my code, clarifying programming concepts, and suggesting improvements to code structure. I entered the following prompts on 16-19 November 2025:
+
+[3] Example prompts used:
+
+“Explain why this error message appears in my code and how to fix it.”
+
+“Suggest a clearer way to structure this function.”
+
+“What is the correct syntax for implementing this feature?”
+
+[4] The output from the generative artificial intelligence was used only to understand errors, explore potential solutions, and improve the organisation of my code. No AI-generated code was copied or included in the final submitted application. All implementation decisions and final code are my own.
+
+## Reference
+
+OpenAI (2025) ChatGPT [Generative AI model]. Available at: https://chat.openai.com/ (Accessed: 16-19 November 2025).
