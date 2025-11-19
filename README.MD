@@ -30,7 +30,6 @@ This application implements audit logging to track all login attempts for securi
 ### Implementation:
 - Created a `login_audit` table with columns: `id`, `username`, `login_time`, `success`, and `ip_address`
 - Modified the `/users/loggedin` route to log every login attempt (both successful and failed)
-- Created a helper function `logLoginAttempt()` that inserts audit records into the database
 - Implemented `/users/audit` route that displays all login attempts in chronological order
 - The audit log shows: username, timestamp, success/failure status, and IP address
 - Failed attempts are logged for: non-existent users, incorrect passwords, and database errors

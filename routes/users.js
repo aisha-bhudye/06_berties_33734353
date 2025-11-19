@@ -60,7 +60,7 @@ router.get("/login", function (req, res, next) {
     res.render("login.ejs");
 });
 
-// LOGIN PROCESSING
+// LOGIN PROCESSING 
 router.post("/loggedin", function (req, res, next) {
     const username = req.body.username;
     const plainPassword = req.body.password;
@@ -70,12 +70,18 @@ router.post("/loggedin", function (req, res, next) {
 
     db.query(sqlquery, [username], (err, result) => {
         if (err) {
-            logLoginAttempt(username, false, ipAddress);
+            db.query(
+                "INSERT INTO login_audit (username, success, ip_address) VALUES (?, ?, ?)",
+                [username, false, ipAddress]
+            );
             return next(err);
         }
 
         if (result.length === 0) {
-            logLoginAttempt(username, false, ipAddress);
+            db.query(
+                "INSERT INTO login_audit (username, success, ip_address) VALUES (?, ?, ?)",
+                [username, false, ipAddress]
+            );
             return res.send("Login failed: User not found");
         }
 
@@ -83,20 +89,30 @@ router.post("/loggedin", function (req, res, next) {
 
         bcrypt.compare(plainPassword, hashedPassword, function (err, match) {
             if (err) {
-                logLoginAttempt(username, false, ipAddress);
+                db.query(
+                    "INSERT INTO login_audit (username, success, ip_address) VALUES (?, ?, ?)",
+                    [username, false, ipAddress]
+                );
                 return next(err);
             }
 
             if (match) {
-                logLoginAttempt(username, true, ipAddress);
+                db.query(
+                    "INSERT INTO login_audit (username, success, ip_address) VALUES (?, ?, ?)",
+                    [username, true, ipAddress]
+                );
                 res.send("Login successful! Welcome back, " + username);
             } else {
-                logLoginAttempt(username, false, ipAddress);
+                db.query(
+                    "INSERT INTO login_audit (username, success, ip_address) VALUES (?, ?, ?)",
+                    [username, false, ipAddress]
+                );
                 res.send("Login failed: Incorrect password");
             }
         });
     });
 });
+
 
 // AUDIT LOG
 router.get("/audit", function (req, res, next) {
@@ -116,12 +132,6 @@ router.get("/audit", function (req, res, next) {
     });
 });
 
-// LOG ATTEMPT
-function logLoginAttempt(username, success, ipAddress) {
-    let sql = "INSERT INTO login_audit (username, success, ip_address) VALUES (?, ?, ?)";
-    db.query(sql, [username, success, ipAddress], (err) => {
-        if (err) console.error("Error logging login attempt:", err);
-    });
-}
+
 
 module.exports = router;
