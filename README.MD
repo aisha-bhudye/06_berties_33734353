@@ -225,6 +225,23 @@ All other user-submitted text fields were sanitised because they appear in HTML 
 
 ---
 
+## API Documentation
+
+### Get all books
+GET /api/books
+
+### Search books
+GET /api/books?search=universe
+
+### Filter by price range
+GET /api/books?minprice=5&max_price=10
+
+### Sort results
+GET /api/books?sort=name
+GET /api/books?sort=price
+
+### Combined parameters
+GET /api/books?search=world&minprice=5&sort=price
 
 ### AI Declaration
 
